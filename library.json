@@ -1,0 +1,21 @@
+{
+  "name": "MyDebug",
+  "version": "1.0.0",
+  "description": "Custom Arduino library for debug print",
+  "keywords": "arduino, esp32, log, debug",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/themelisx/MyDebug.git"
+  },
+  "authors": [
+    {
+      "name": "Themelisx",
+      "email": "themelisx@gmail.com",
+      "maintainer": true
+    }
+  ],
+  "license": "MIT",
+  "frameworks": "arduino",
+  "platforms": "*",
+  "headers": ["MyDebug.h"]
+}
