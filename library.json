@@ -17,5 +17,5 @@
   "license": "MIT",
   "frameworks": "arduino",
   "platforms": "*",
-  "headers": ["myDebug.h"]
+  "headers": ["MyDebug.h"]
 }

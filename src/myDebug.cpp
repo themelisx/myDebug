@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "myDebug.h"
+#include "MyDebug.h"
 
 MyDebug::MyDebug() {   
 
