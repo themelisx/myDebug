@@ -11,51 +11,32 @@
 #define DEBUG_LEVEL_DEBUG2 5
 
 class MyDebug {
-  private:
-    int speed;
-    int debugLevel;
-
-  public:
+public:
     MyDebug();
     void start(int speed, int debugLevel);
 
-    void print(int debugLevel, const __FlashStringHelper *ifsh);
-    void print(int debugLevel, const String &s);
-    void print(int debugLevel, const char str[]);
-    void print(int debugLevel, char c);
-    void print(int debugLevel, unsigned char b, int base);
-    void print(int debugLevel, int num);
-    void print(int debugLevel, int n, int base);
-    void print(int debugLevel, unsigned int n, int base);
-    void print(int debugLevel, long n, int base);
-    void print(int debugLevel, unsigned long n, int base);
-    void print(int debugLevel, long long n, int base);
-    void print(int debugLevel, unsigned long long n, int base);
-    void print(int debugLevel, double n, int digits);    
-    #ifdef ESP32
-      void print(int debugLevel, const Printable& x);
-      void print(int debugLevel, struct tm * timeinfo, const char * format);
-    #endif
-
-    void println(int debugLevel, const __FlashStringHelper *ifsh);
-    void println(int debugLevel, const String &s);
-    void println(int debugLevel, const char c[]);
-    void println(int debugLevel, char c);
-    void println(int debugLevel, int num);
-    void println(int debugLevel, unsigned char b, int base);
-    void println(int debugLevel, int num, int base);
-    void println(int debugLevel, unsigned int num, int base);
-    void println(int debugLevel, long num, int base);
-    void println(int debugLevel, unsigned long num, int base);
-    void println(int debugLevel, long long num, int base);
-    void println(int debugLevel, unsigned long long num, int base);
-    void println(int debugLevel, double num, int digits);
+    void print(int level, const char *fmt, ...);
+    void println(int level, const char *fmt, ...);
     
-    #ifdef ESP32
-      void println(int debugLevel, const Printable& x);
-      void println(int debugLevel, struct tm * timeinfo, const char * format);
-    #endif
+    template<typename T>
+    void print(int level, T value) {
+        if(level <= debugLevel)
+            Serial.print(value);
+    }
 
+    template<typename T>
+    void println(int level, T value) {
+        if(level <= debugLevel)
+            Serial.println(value);
+    }
+
+    void print(int level, const String &s);
+    void println(int level, const String &s);
+    void println(int level);
+
+private:
+    int speed = 115200;
+    int debugLevel = DEBUG_LEVEL_NONE;
 };
 
 #endif
